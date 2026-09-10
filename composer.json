@@ -27,8 +27,8 @@
         "laravel/sail": "^1.67",
         "mockery/mockery": "^1.6",
         "nunomaduro/collision": "^8.9.3",
-        "pestphp/pest": "^5.1",
-        "pestphp/pest-plugin-laravel": "5.0.0"
+        "pestphp/pest": "^4.6.3",
+        "pestphp/pest-plugin-laravel": "^4.0.0"
     },
     "autoload": {
         "psr-4": {
@@ -66,7 +66,7 @@
             "@test"
         ],
         "types:check": [
-            "phpstan analyse"
+            "PHPSTAN_DISABLE_TURBO_EXTENSION=1 phpstan analyse --memory-limit=256M"
         ],
         "test": [
             "@php artisan config:clear --ansi",
@@ -108,6 +108,9 @@
         "allow-plugins": {
             "pestphp/pest-plugin": true,
             "php-http/discovery": true
+        },
+        "platform": {
+            "php": "8.3.33"
         }
     },
     "minimum-stability": "stable",

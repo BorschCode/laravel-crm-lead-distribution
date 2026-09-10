@@ -25,8 +25,7 @@ use Illuminate\Support\Str;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  */
-#[Fillable(['name', 'email', 'password'])]
-#[Hidden(['password', 'two_factor_secret', 'two_factor_recovery_codes', 'remember_token'])]
+        protected $fillable = ["name", "email", "password"];\        protected $hidden = ["password", "two_factor_secret", "two_factor_recovery_codes", "remember_token"];
 class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
@@ -50,10 +49,18 @@ class User extends Authenticatable
      */
     public function initials(): string
     {
-        $initials = Str::initials($this->name, true);
-
-        return Str::length($initials) > 1
-            ? Str::substr($initials, 0, 1).Str::substr($initials, -1)
-            : $initials;
+        $name = trim($this->name);
+        if ($name === "") {
+            return "";
+        }
+        $words = preg_split(\'/\\s+/\', $name);
+        $initials = "";
+        foreach ($words as $word) {
+            $initials .= strtoupper($word[0]);
+        }
+        if (strlen($initials) > 1) {
+            return $initials[0] . $initials[strlen($initials)-1];
+        }
+        return $initials;
     }
 }

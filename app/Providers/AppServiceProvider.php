@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Services\LeadDistribution\Contracts\LeadDistributionStrategy;
+use App\Services\LeadDistribution\Strategies\LeastLoadedStrategy\LeastLoadedStrategy;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
@@ -15,7 +17,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind(
+            LeadDistributionStrategy::class,
+            LeastLoadedStrategy::class
+        );
     }
 
     /**

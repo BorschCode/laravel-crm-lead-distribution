@@ -1,10 +1,10 @@
 <?php
 
+use App\Enums\LeadStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
-use App\Enums\LeadStatus;
+use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {

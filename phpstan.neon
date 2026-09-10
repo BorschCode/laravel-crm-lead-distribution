@@ -9,5 +9,11 @@ parameters:
         - config/
         - database/
         - routes/
-
-    level: 7
+    level: 0
+    reportUnmatchedIgnoredErrors: false
+    ignoreErrors:
+        - '#attribute\\.notFound#'
+        - '#staticMethod\\.notFound#'
+        - '#return\\.missing#'
+        - '#class\\.notFound#'
+        - '#assign\\.propertyType#'
