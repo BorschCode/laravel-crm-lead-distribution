@@ -1,11 +1,11 @@
 services:
     crm.lead:
         build:
-            context: './docker/8.5'
+            context: './docker/8.3'
             dockerfile: Dockerfile
             args:
                 WWWGROUP: '${WWWGROUP}'
-        image: 'sail-8.5/app'
+        image: 'sail-8.3/app'
         extra_hosts:
             - 'host.docker.internal:host-gateway'
         ports:
