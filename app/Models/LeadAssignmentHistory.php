@@ -19,11 +19,17 @@ class LeadAssignmentHistory extends Model
         'assigned_at' => 'datetime',
     ];
 
+    /**
+     * Get the lead that the history belongs to.
+     */
     public function lead(): BelongsTo
     {
         return $this->belongsTo(Lead::class);
     }
 
+    /**
+     * Get the manager that assigned the lead.
+     */
     public function manager(): BelongsTo
     {
         return $this->belongsTo(Manager::class);

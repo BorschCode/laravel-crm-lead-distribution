@@ -18,11 +18,17 @@ class Lead extends Model
         'status' => LeadStatus::class,
     ];
 
+    /**
+     * Get the manager that owns the lead.
+     */
     public function manager(): BelongsTo
     {
         return $this->belongsTo(Manager::class);
     }
 
+    /**
+     * Get all of the assignment histories for the lead.
+     */
     public function assignmentHistories(): HasMany
     {
         return $this->hasMany(LeadAssignmentHistory::class);
